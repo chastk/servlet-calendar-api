@@ -25,7 +25,6 @@
       <groupId>edu.rpi.tw</groupId>
       <artifactId>calendar-api</artifactId>
       <version>0.1-SNAPSHOT</version>
-      <classifier>module</classifier>
       <scope>provided</scope>
     </dependency>
   </dependencies>

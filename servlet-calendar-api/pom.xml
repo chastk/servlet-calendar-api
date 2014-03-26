@@ -27,6 +27,11 @@
       <version>0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
+	<dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-calendar</artifactId>
+      <version>v3-rev73-1.17.0-rc</version>
+    </dependency>
   </dependencies>
   
   <repositories>

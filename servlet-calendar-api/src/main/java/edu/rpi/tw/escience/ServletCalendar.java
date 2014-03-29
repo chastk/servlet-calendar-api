@@ -63,33 +63,18 @@ class ServletCalendar implements Calendar {
         return new EventIterator( this );
     }
     
-	/**
-     * Obtain a list of {@link Event}s from the calendar.
-     * @return A {@link java.util.List List} of {@link Event} objects obtained
-     * from the calendar API implementation.
-     */
 	@Override
     public List<Event> getUpcomingEvents(){
 		return getUpcomingEvents( DAY_IN_FUTURE );
 	}// /getUpcomingEvents
 
-    /**
-     * Retrieves a list of {@link Event}s from the calendar that have instances
-     * that occur within a specified interval in the future from the current
-     * time.
-     * @param millisInFuture Limit search to a certain number of milliseconds
-     * into the future
-     * @return A {@link java.util.List List} of {@link Event} objects obtained
-     * from the calendar API implementation, limited to events with instances
-     * that will occur less than millisInFuture.
-     */
 	@Override
     public List<Event> getUpcomingEvents(long millisInFuture){
 		final long now = java.util.Calendar.getInstance().getTimeInMillis();
 		List<Event> upcoming = new ArrayList<Event>();
-		//timeMin 	datetime
+		//timeMin
 		Date today = new Date();
-		//timeMax 	datetime 
+		//timeMax
 		Date tomorrow = new Date((today.getTime()) + millisInFuture);
 		
         String pageToken = null;
@@ -105,27 +90,11 @@ class ServletCalendar implements Calendar {
         return upcoming;
 	}// /getUpcomingEvents
 
-    /**
-     * Obtains a list of {@link Events}s from the calendar that occurred before
-     * the current time.
-     * @return A {@link java.util.List List} of {@link Event} objects obtained
-     * from the calendar API implementation.
-     */
 	@Override
     public List<Event> getPastEvents(){
 		return getPastEvents( 0 );
 	}// /getPastEvents
 
-    /**
-     * Retrieves a list of {@link Event}s from the calendar that have instances
-     * that occur within a specified interval in the past from the current
-     * time.
-     * @param millisInPast Limit search to a certain number of milliseconds in
-     * the past
-     * @return A {@link java.util.List List} of {@link Event} objects obtained
-     * from the calendar API implementation, limited to events with instances
-     * that have occurred less than millisInFuture in the past.
-     */
 	@Override
     public List<Event> getPastEvents(long millisInPast){
 		List<Event> past = new ArrayList<Event>();
@@ -146,13 +115,6 @@ class ServletCalendar implements Calendar {
 		return past;
 	}// /getPastEvents
 
-    /**
-     * Obtains a list of all events in the calendar. If the underlying
-     * implementation does not support this operation, it may elect to throw
-     * a {@link java.lang.UnsupportedOperationException} runtime exception.
-     * @return A {@link java.util.List List} of {@link Event} objects obtained
-     * from the calendar API implementation.
-     */
 	@Override
     public List<Event> getEvents(){
 		List<Event> allEvents = new ArrayList<Event>();
@@ -180,30 +142,16 @@ class ServletCalendar implements Calendar {
 		
 	}// /getEventById
 
-    /**
-     * Gets the name for this calendar.
-     * @return
-     */
 	@Override
     public String getName(){
 		return calName;
 	}// /getName
 
-    /**
-     * Returns the display name for the calendar as it should be displayed in
-     * a user interface.
-     * @return
-     */
 	@Override
     public String getDisplayName(){
 		return displayName;
 	}// /getDisplayName
 
-    /**
-     * Returns the account name, if any, that this calendar originates from.
-     * @return A string containing an account name, otherwise null (e.g., if
-     * the account is local)
-     */
 	@Override
     String getAccountName(){
 		return accountName;

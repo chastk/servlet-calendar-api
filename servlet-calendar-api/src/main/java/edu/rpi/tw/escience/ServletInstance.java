@@ -12,15 +12,6 @@ import com.google.api.services.calendar.model.*;
 import edu.rpi.tw.calendar.Event;
 import edu.rpi.tw.calendar.Instance;
 
-/**
- * The Instance interface provides a wrapper around implementation-dependent
- * details of calendar event instances. It is meant to support accessing
- * the start/end times for a specific event occurrence. Instances may not
- * actually be stored anywhere in the implementation but instead be generated
- * at runtime in the event a recurrence rule exists in the parent event.
- * @author ewpatton
- *
- */
 public class ServletInstance implements Instance {
 	
 	public static final String[] INSTANCE_PROJECTION = {
@@ -42,31 +33,15 @@ public class ServletInstance implements Instance {
         this.end = Calendar.getInstance().end.dateTime();
     }
 	
-    /**
-     * Obtains a {@link java.util.Calendar Calendar} representing the starting
-     * date and time of this instance.
-     * @return
-     */
     public java.util.Calendar getStart(){
-		return this.start;
+		return (Calendar) this.start;
     }// /getStart()
 
-    /**
-     * Obtains a {@link java.util.Calendar Calendar} representing the ending
-     * date and time of this instance.
-     * @return
-     */
     public java.util.Calendar getEnd(){
-    	return this.end;
+    	return (Calendar) this.end;
     }// /getEnd()
 
-    /**
-     * Gets the parent {@link Event} for this instance. Note: Implementations
-     * SHOULD use {@link java.lang.ref.WeakReference} to maintain parent links
-     * to keep the calendar structure tree-like for garbage collection.
-     * @return
-     */
     public Event getEvent(){
-    	return this.event;
+    	return this.event.get();
     }// /getEvent()
 }
